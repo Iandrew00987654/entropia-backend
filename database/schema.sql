@@ -1,6 +1,19 @@
 CREATE DATABASE IF NOT EXISTS entropia_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE entropia_db;
 
+CREATE DATABASE IF NOT EXISTS entropia_db;
+
+CREATE USER IF NOT EXISTS 'entropia_user'@'%'
+IDENTIFIED BY 'entropia123';
+
+ALTER USER 'entropia_user'@'%'
+IDENTIFIED BY 'entropia123';
+
+GRANT ALL PRIVILEGES ON entropia_db.*
+TO 'entropia_user'@'%';
+
+FLUSH PRIVILEGES;
+
 -- 1. Tabla Maestra: Registro de la Simulación y su Entorno
 CREATE TABLE IF NOT EXISTS simulations (
     id INT AUTO_INCREMENT PRIMARY KEY,
